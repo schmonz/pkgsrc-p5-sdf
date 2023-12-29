@@ -14,6 +14,30 @@ LICENSE=	2-clause-bsd
 PERL5_PACKLIST=	auto/SDF/.packlist
 USE_LANGUAGES=	# none
 
+SUBST_CLASSES=		pkgsep
+SUBST_STAGE.pkgsep=	post-configure
+SUBST_FILES.pkgsep=	bin/sdfget bin/sdf \
+			perllib/sdf/home/stdlib/misc.sdm \
+			perllib/sdf/home/stdlib/bugtrack.sdm \
+			perllib/sdf/home/stdlib/mif.sdn \
+			perllib/sdf/home/stdlib/usecases.sdm \
+			perllib/sdf/home/stdlib/delphi.sdm \
+			perllib/sdf/values.pl \
+			perllib/sdf/tohtml.pl \
+			perllib/sdf/subs.pl \
+			perllib/sdf/tomif.pl \
+			perllib/sdf/calc.pl \
+			perllib/sdf/name.pl \
+			perllib/sdf/macros.pl \
+			perllib/sdf/parse.pl \
+			perllib/sdf/filters.pl \
+			doc/guru/ex_filt.sdf \
+			doc/ref/sfindfil.sdf
+SUBST_SED.pkgsep=	-e "s| &'| ::|g"
+SUBST_SED.pkgsep+=	-e "s|	&'| ::|g"
+SUBST_SED.pkgsep+=	-e "s|(&'|(::|g"
+SUBST_SED.pkgsep+=	-e "s|\!&'|!::|g"
+
 pre-configure:
 	${FIND} ${WRKSRC} -type f -name '*.orig' -print | ${XARGS} ${RM} -f
 

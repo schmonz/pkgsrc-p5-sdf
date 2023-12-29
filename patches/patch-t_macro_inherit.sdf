@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- t/macro/inherit.sdf.orig	2023-10-09 15:57:16.846617425 +0000
++++ t/macro/inherit.sdf
+@@ -6,7 +6,7 @@
+ sub dump_path_Macro {
+     local($sdfhome, $igc);
+ 
+-    $sdfhome = $'app_lib_dir;
++    $sdfhome = $::app_lib_dir;
+     print "SDF include path is now:\n";
+     for $igc (@include_path) {
+         $igc =~ s/$sdfhome/\$SDFHOME/;

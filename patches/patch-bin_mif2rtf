@@ -1,0 +1,22 @@
+$NetBSD$
+
+--- bin/mif2rtf.orig	1998-03-01 10:12:10.000000000 +0000
++++ bin/mif2rtf
+@@ -223,7 +223,7 @@ $fullcatalog=1;
+ #
+ #------------------------------------------------------------------------------
+ 
+-require 'ctime.pl';	# for date
++use POSIX qw(ctime);
+ 
+ $winhelp=1; 	# this controls the handling of certain constructs that
+ 		# are *naughty* in the context of windows help files
+@@ -3032,7 +3032,7 @@ sub panic {
+     local($i,$_);
+     local($p,$f,$l,$s,$h,$a,@a,@sub);
+     for ($i = 1; ($p,$f,$l,$s,$h,$w) = caller($i); $i++) {
+-        @a = @DB'args;
++        @a = @DB::args;
+         for (@a) {
+             if (/^StB\000/ && length($_) == length($_main{'_main'})) {
+                 $_ = sprintf("%s",$_);

@@ -1,0 +1,42 @@
+$NetBSD$
+
+--- bin/sdf.orig	1999-05-24 03:43:15.000000000 +0000
++++ bin/sdf
+@@ -604,17 +604,17 @@ sub argPostProcess {
+     # Ensure the necessary variables are exported to the 'user' package
+     # Note: If post-processing is the only thing requested, the output
+     # extension is taken from the input filename
+-    $SDF_USER'short = (&NameSplit($ARGV))[1];
+-    $SDF_USER'long = &NameJoin($out_dir, $SDF_USER'short, '');
+-    $SDF_USER'out_ext = $out_ext eq '' ? (&NameSplit($ARGV))[2] : $out_ext;
+-    $SDF_USER'width = $SDF_USER'var{'OPT_WIDTH'};
+-    $SDF_USER'title = $SDF_USER'var{'DOC_TITLE'};
+-    $SDF_USER'title =~ s/['\\]/\\$&/g;
+-    $SDF_USER'project = $SDF_USER'var{'DOC_PROJECT'};
+-    $SDF_USER'project =~ s/['\\]/\\$&/g;
+-    $SDF_USER'product = $SDF_USER'var{'DOC_PRODUCT'};
+-    $SDF_USER'product =~ s/['\\]/\\$&/g;
+-    $SDF_USER'section = $SDF_USER'var{'DOC_SECTION'} || 1;
++    $SDF_USER::short = (&NameSplit($ARGV))[1];
++    $SDF_USER::long = &NameJoin($out_dir, $SDF_USER::short, '');
++    $SDF_USER::out_ext = $out_ext eq '' ? (&NameSplit($ARGV))[2] : $out_ext;
++    $SDF_USER::width = $SDF_USER::var{'OPT_WIDTH'};
++    $SDF_USER::title = $SDF_USER::var{'DOC_TITLE'};
++    $SDF_USER::title =~ s/['\\]/\\$&/g;
++    $SDF_USER::project = $SDF_USER::var{'DOC_PROJECT'};
++    $SDF_USER::project =~ s/['\\]/\\$&/g;
++    $SDF_USER::product = $SDF_USER::var{'DOC_PRODUCT'};
++    $SDF_USER::product =~ s/['\\]/\\$&/g;
++    $SDF_USER::section = $SDF_USER::var{'DOC_SECTION'} || 1;
+ 
+     # Do the post processing
+     for $action (@post_process) {
+@@ -625,7 +625,7 @@ sub argPostProcess {
+             next if $verbose && $action =~ /clean/;
+             &AppMsg("object", "'$action' post processing...") if $verbose >= 0;
+             package SDF_USER;
+-            eval $'post_processing{$'action};
++            eval $::post_processing{$::action};
+             if ($@) {
+                 &'AppMsg('abort', "error in '$action' post processing: $@");
+             }
