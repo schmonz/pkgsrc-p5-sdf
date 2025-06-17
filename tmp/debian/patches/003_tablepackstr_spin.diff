@@ -1,0 +1,23 @@
+From 3f7a85681e3a008d7910de40de45a2e091b91718 Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@debian.org>
+Date: Tue, 7 Jan 2014 01:55:41 +0000
+Subject: 003_tablepackstr_spin.diff
+
+Patch-Name: 003_tablepackstr_spin.diff
+---
+ perllib/sdf/table.pl | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/perllib/sdf/table.pl b/perllib/sdf/table.pl
+index f7ab104..b6a02f8 100644
+--- a/perllib/sdf/table.pl
++++ b/perllib/sdf/table.pl
+@@ -915,7 +915,7 @@ sub _TablePackStr {
+     local($packfmt);
+ 
+     $packfmt = '';
+-    while ($format =~ s/\w+\s+//e) {
++    while ($format =~ s/\w+\s+//) {
+         $packfmt .= 'A' . length($&);
+     }
+     $packfmt .= 'A*';

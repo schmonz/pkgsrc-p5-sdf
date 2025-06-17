@@ -1,0 +1,36 @@
+Source: sdf
+Section: text
+Priority: optional
+Maintainer: Colin Watson <cjwatson@debian.org>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 3.9.8
+Vcs-Git: https://salsa.debian.org/debian/sdf.git
+Vcs-Browser: https://salsa.debian.org/debian/sdf
+
+Package: sdf
+Architecture: all
+Depends: ${misc:Depends}, ${perl:Depends}
+Suggests: sdf-doc, perl-doc, htmldoc, texlive-latex-base, ghostscript, sgmltools-lite
+Multi-Arch: foreign
+Description: Simple Document Parser
+ SDF (Simple Document Format) is a freely available document development
+ system which generates high quality outputs in a variety of formats
+ from a single source. The output formats supported include
+ PostScript(tm), PDF, HTML, plain text, POD, man pages, LaTeX,
+ MIF, SGML, Windows(tm) help, RTF, MIMS F6 help and MIMS HTX help.
+ If the idea of specifying documents in a logical manner via a
+ simple markup language sounds appealing, SDF may be useful to you.
+
+Package: sdf-doc
+Architecture: all
+Section: doc
+Depends: ${misc:Depends}
+Multi-Arch: foreign
+Description: Documentation and examples for the Simple Document Parser
+ SDF (Simple Document Format) is a freely available document development
+ system which generates high quality outputs in a variety of formats
+ from a single source. The output formats supported include
+ PostScript(tm), PDF, HTML, plain text, POD, man pages, LaTeX,
+ MIF, SGML, Windows(tm) help, RTF, MIMS F6 help and MIMS HTX help.
+ If the idea of specifying documents in a logical manner via a
+ simple markup language sounds appealing, SDF may be useful to you.

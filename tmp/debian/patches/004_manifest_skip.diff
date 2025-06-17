@@ -1,0 +1,27 @@
+From 27486564e5306baeebd450bf8f01cc3f7252f582 Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@debian.org>
+Date: Tue, 7 Jan 2014 01:55:42 +0000
+Subject: Skip some Debian packaging files in MANIFEST check
+
+Forwarded: not-needed
+Last-Update: 2014-01-07
+
+Patch-Name: 004_manifest_skip.diff
+---
+ MANIFEST.SKIP | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/MANIFEST.SKIP b/MANIFEST.SKIP
+index 3e4cdc6..8c67c2c 100644
+--- a/MANIFEST.SKIP
++++ b/MANIFEST.SKIP
+@@ -7,3 +7,9 @@ Makefile$
+ pm_to_blib$
+ ^sdf.prj$
+ ^\.sdf.prcs_aux$
++
++# Added for Debian packaging
++^\.git/
++^\.gitignore
++^\.pc/
++^debian/

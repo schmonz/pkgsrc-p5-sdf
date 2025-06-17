@@ -1,0 +1,37 @@
+From d53f58f7bb6d1e64c6f4a143d680114b3c652e93 Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@debian.org>
+Date: Tue, 7 Jan 2014 01:55:40 +0000
+Subject: 002_pod_man_conventions.diff
+
+Patch-Name: 002_pod_man_conventions.diff
+---
+ perllib/sdf/topod.pl | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/perllib/sdf/topod.pl b/perllib/sdf/topod.pl
+index ea3c663..f760968 100755
+--- a/perllib/sdf/topod.pl
++++ b/perllib/sdf/topod.pl
+@@ -450,7 +450,21 @@ sub _PodElement {
+ 
+     # For headings, map the tag to a command
+     if ($tag =~ /^head/) {
+-        return "=$tag $text\n";
++        if ($SDF_USER'var{'MAN_CONVENTIONS'}) {
++            if ($tag =~ /^head1/ && !$seen_name) {
++                $seen_name = 1;
++                return "=$tag NAME\n\n$text\n";
++            }
++            elsif ($tag =~ /^head2/) {
++                return "=head1 \U$text\E\n";
++            }
++            else {
++                return "=$tag $text\n";
++            }
++        }
++        else {
++            return "=$tag $text\n";
++        }
+     }
+ 
+     # Otherwise, format as a plain paragraph

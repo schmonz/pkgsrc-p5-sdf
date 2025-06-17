@@ -1,0 +1,27 @@
+From 96891a072b0cf527942af6a0f401e3a8571a6b19 Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@debian.org>
+Date: Sun, 5 Jun 2016 21:07:00 +0100
+Subject: Escape braces in regex
+
+Bug-Debian: https://bugs.debian.org/826504
+Forwarded: no
+Last-Update: 2016-06-05
+
+Patch-Name: 007_escape_braces_in_regex.diff
+---
+ perllib/sdf/tomif.pl | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/perllib/sdf/tomif.pl b/perllib/sdf/tomif.pl
+index 968bedb..7f4495d 100755
+--- a/perllib/sdf/tomif.pl
++++ b/perllib/sdf/tomif.pl
+@@ -4459,7 +4459,7 @@ sub _MifEscapeNewlink {
+     # strip backquotes 
+     $link =~ s/\`//g;
+ 
+-    1 while $link =~ s/{{.:([^}]*)}}/$1/e;
++    1 while $link =~ s/\{\{.:([^}]*)\}\}/$1/e;
+ 
+     $link =~ s/^\s+//;
+ 

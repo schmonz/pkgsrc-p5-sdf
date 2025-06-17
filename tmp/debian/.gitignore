@@ -1,0 +1,6 @@
+/*.debhelper*
+/*.substvars*
+/files
+/manpages-tmp
+/sdf
+/sdf-doc
